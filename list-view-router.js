@@ -1,12 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
-//data for list view
-const data = [
-    { id: 1, description: 'Description for Item 1', iscompleted: false },
-    { id: 2, description: 'Description for Item 2', iscompleted: false },
-    { id: 3, description: 'Description for Item 3', iscompleted: true },
-];
+const data = require('./work-list.js');
 
 router.get('/', (req, res) => {
     res.json(data);

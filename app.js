@@ -2,11 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-const work_list = [
-  { id:123456, isCompleted:false, description:"Walk the dog" },
-  { id:78910, isCompleted:true, description:"Do the dishes" }
-];
-
+const work_list = require('./work-list.js');
 const listViewRouter = require('./list-view-router');
 const listEditRouter = require('./list-edit-router');
 
