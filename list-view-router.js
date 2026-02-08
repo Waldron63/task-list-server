@@ -22,14 +22,14 @@ const validateIsCompleteParam = (req, res, next) => {
 }
 
 router.get('/', (req, res) => {
-    res.json(data);
+    res.status(200).json({ message: 'All task list sended!!', data: data });
 })
 
 router.get('/:id', validateIdParam, (req, res) => {
     const itemId = parseInt(req.params.id, 10);
     const item = data.find(d => d.id === itemId);
-    if (item) {
-        res.json(item);
+    if (item && item.id > 0) {
+        res.status(200).json({ message: 'Task found!!', data: item });
     } else {
         res.status(404).json({ error: 'Item not found' });
     }
@@ -38,7 +38,7 @@ router.get('/:id', validateIdParam, (req, res) => {
 router.get('/iscomplete/:iscomplete', validateIsCompleteParam, (req, res) => {
     const isComplete = req.params.iscomplete === 'true';
     const filteredItems = data.filter(d => d.iscompleted === isComplete);
-    res.json(filteredItems);
+    res.status(200).json({ message: 'Tasks founds!!', data: filteredItems });
 })
 
 module.exports = router;
